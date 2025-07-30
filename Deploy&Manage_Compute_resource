@@ -1,0 +1,69 @@
+Azure disk:  when we deployed a VM, a disk will created with 127GiB at OS level, where we can store our data.
+
+Azure disks are block level storage, these are managed by azure.
+
+Disk can created while launching the vm or after creation of VM.
+
+We can attach the Disk to VM also
+
+Vm will get temporary disk also, the size of temporary disk is depends on size of the VM.
+
+
+To attach a data disk to VM:
+	1.	In portal-go to VM-select disks under settings
+	2.	Click on attach data disk
+	3.	Give the details such as name, storage type, size
+	4.	After the data disk created, the VM will updated.
+	5.	Login to the VM-go to server manager-now we need to mount the volume to disk
+	6.	Click on file and storage services-disks-you can see the count of disks- right click on which you created in the portal, initialise it.
+	7.	Once it was initialized, click on create new volume and give details of that disk.
+
+When you stopped or deallocated the VM from azure portal
+	1.	The data files or folders in temporary disk will get deleted.
+	2.	But the data in c drive and data disk which one we attached, they will not delete 
+	3.	If the VM ip is static the ip will not change.
+	4.	The underlying physical infrastructure of VM might be same or not.
+
+Disk Snapshot:  snapshot is a read only copy of virtual hard disk. We can take a snapshot of OS level disk or data disk to use it as a backup. 
+
+To create a snapshot of Data Disk:
+	1.	Go to  VM-settings-disk
+	2.	Select the data disk what we created for VM 
+	3.	Click on “create snapshot”
+	4.	Give details such as RG, name of the disk.
+	5.	Click on create.
+	6.	Once you created, go to the resource, it was a separate resource.
+	7.	So open that snapshot, in snapshot overview page, we can see option called “create disk”
+	8.	So from the created snapshot, we can create a data disk.
+	9.	Click on create disk, provide details.
+	10.	Now we have new data disk from the disk snapshot from the existed data disk of the VM.
+	11.	Go to any other VM, settings- disks
+	12.	Click on “attach an existing disk” give name and apply.
+	13.	Now login to VM, you will see the volume called “data” what we created earlier. Whatever file are available in data disk , we can see same file in another VM of data volume. Because same disk we attached through snapshot.
+
+We can detach the existing disk from the VM and attach it to a new another VM.
+
+
+Disk Encryption: when we created a disk.  It’s stored in storage unit of azure data centre.
+
+For security purpose, to protect our disk from malicious users, we need to encrypt the disk.
+
+For encryption of disk, we can encrypt with the help of key vault.
+
+By default the OS level disk and data disk are encrypted using SSE with PMK(server side encryption with platform managed keys) by Azure.
+
+
+But if customer wants to encrypt them using their own keys that means customer managed key, then we can use the Key vault for our own keys 
+
+The purge protection and soft enables should be enabled while creating the key vault.
+
+To create the key in key vault:
+ Go to key vault-keys-click on create keys-give name, size, and type-create.
+
+To create the disk encryption set:
+Search for disk encryption set-give name, key vault-key details-and create.
+
+To attaché CMK as encryption for VM disk, first we need to deattach the disk which we attached.
+
+So, go to vm-settings-disk, deattach  and apply.
+And now go to disk, in the encryption, select the CMK with key vault details.
