@@ -67,3 +67,38 @@ To attaché CMK as encryption for VM disk, first we need to deattach the disk wh
 
 So, go to vm-settings-disk, deattach  and apply.
 And now go to disk, in the encryption, select the CMK with key vault details.
+
+
+Availability sets: we can use availability set, to increase the availability of our infrstructure.
+Fault domains: are used to define the group of virtual machines that share a common source and network switch. You can have up to 3 fault domains.
+
+Update domains: are used to group virtual machines and physical hardware that can be rebooted at the same time. You can have up to 20 update domains.
+
+Availability Zone: availabilty set and availability zone are both used to make sure our infrastructure is highly available.
+but the difference b/w both of them is AZ is making our infra to availa at data centre level.
+In case of AS, if fault domain & Update domains are part of same data centre, what happens if entire data centre fails due to any flood or something happens, or went down
+so, when we deployed VM in part of AZ, AZ contains one or more data centres, if one DC fails, we can have our infra avail from other DC.
+Note: if one application is hosted on VM, there is no replica of that app in another VM of another datacentre, as azure user we need to take care of that, azure will not maintain replica of our data enire DC or,AZ.
+Each Availability zone is a unique physical location in an Azure region.
+Each zone comprises of one or more data centers that has independent power, cooling, and networking
+Data Ingress is free, data egree is charges.
+
+Virtual Machine Scale Set (VMSS): The VMSS resource provides us the group of load balanced Virtual Machines, where the VM are grow up and down based on the load.
+Creation of VMSS:
+1) search for VMSS in portal, click on create, provide SUB, RG, and VMSS name
+2) give underlying image, size of VM, scaling mode (automatic or manual), instance count (how many VM's we want)
+3) we can enable public ip address for VMSS, if we not configured Load Balancer for VMSS, click on create.
+
+Once the VMSS was created, go to VMSS->click on instances->now you able to see your VM/instances, how many you configured.
+but you can't see the instances as part of VM resources, because there are part of VMSS.
+
+To Scale:
+click on scale->you have two options->manual scale and custom scale
+if we select custom scale->it will ask for scale mode, based on two options, one is scale based on metric and scale to a specific instance count (in this second option, we can only mention instance count).
+But, if we selected scaled based on metric, then we need to add rules for that.
+rule is like->we need to give metric name such as CPU percentage more than 70%, and operator as >70, increase the instance count by 1 or 2 (how many you want)
+and then we can also mention min and max of instance counts and apply.
+And also we can add rules, if CPU % is less than 70%, then to decrease the instance the count.
+
+Note: VMSS can scale instances based on Demand, it can scale VM only, but it will not replicate your application on to the scaled VM, it your responsibility to maintain your application onto the scaled VM
+that is done using the custom script extensions or custom images.
