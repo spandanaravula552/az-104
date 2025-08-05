@@ -102,3 +102,6 @@ And also we can add rules, if CPU % is less than 70%, then to decrease the insta
 
 Note: VMSS can scale instances based on Demand, it can scale VM only, but it will not replicate your application on to the scaled VM, it your responsibility to maintain your application onto the scaled VM
 that is done using the custom script extensions or custom images.
+
+While deploying the VMSS if we select the orchestration mode as flexible, then our VM/Instances will display in VM resource page.
+
