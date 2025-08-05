@@ -105,3 +105,15 @@ that is done using the custom script extensions or custom images.
 
 While deploying the VMSS if we select the orchestration mode as flexible, then our VM/Instances will display in VM resource page.
 
+VMSS will scale the instances not the applications onto the scaled VM by default, but we can automate the deploy of application to the scaled VM's as well.
+1. in VMSS->go to settings->click on Extensions+Applications
+2. give the script of IIS, what you want.
+3. Now that script is available in VMSS
+4. go to instances, select the VM's in VMSS and upgrade them, then the script will excute on to the VM's.
+
+
+Creation Image of a VM from Portal: (Image can be used to create the multiple VM from one VM, with same set of configurations, ex:applications, tools)
+1.Go to VM, on upper menu, click on capture
+2.Provide basic details and create
+3.These images are stored in Azure Compute gallery.
+
