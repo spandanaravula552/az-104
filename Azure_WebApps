@@ -1,4 +1,4 @@
-If we want to install the web application on to VM, first we need to install IIS, and we need to take care of VM.
+If we want to install the web application on to VM, first we need to install IIS (web server), and we need to take care of VM.
 But if use azure web app service to host our web application, we no need to install IIS and no need to worry about virtual or physical infrastructure, aure will take care of that.
 Creation of Azure Web App:
 a) Provide sub and RG name
@@ -7,3 +7,4 @@ c) then give runtime stack, whether it is .net, java, python
 d) then select app service plan (app service plan provides you how much memoryy you want, CPU)
 e) Coming to Networking, you can enable public access or private end point
 f) enable application insights Review+create
+
