@@ -27,3 +27,17 @@ so, for that we can make use of deployment slots in web app, where we can create
 
 IMPLEMENTATION OF DEPLOYMENT SLOTS:
 prerequisite: we need standard or premium app service plan web app needed.
+1. go to web app,deployment slots, click on add 
+2. give name for slot, let's say staging
+3. once the slot is created, we can deploy newer version of web app into the slot.
+4.once the slot is created, you can see two slots, one is production which is having full traffic, another one is staging slot
+5. now you can click on staging slot, same web app will open in another tab with same web app configuration (it is like another web app)
+6. now in this new staging web app, we can publish new configuration web app.
+7 now if we want to swap the slots, go to actual web app, go to slots, click on swap
+8. now users can redirect to staging web app,which has new feature new versions 
+like this we can minimise the downtime for availability of application and reduce the cost for creation of new web app.
+
+SCALING OF WEB APP:
+1. To automate scale of web app, we need premium app service plan
+2. if we want to manually or rule based scale out, we can go with standard sku app service plan.
+3. same like vmss, we can create app metric based rules.
