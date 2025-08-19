@@ -8,3 +8,22 @@ d) then select app service plan (app service plan provides you how much memoryy 
 e) Coming to Networking, you can enable public access or private end point
 f) enable application insights Review+create
 
+if we want to see the deployments in our resource group,
+we can go to resource groups-setting-deployment.
+for example someone deleted VM from that RG, we can go to deployment-select the c/m creation thing- and click on redeploy .so we can create same VM with same configuration details. 
+
+
+
+if we want to create html page in web app for testing, you can wrote html code in open editor tap in web app.
+
+
+DEPLOYMENT SLOTS:
+in web app, one web application was published, and users are accessing to that
+if we want to add new feature, bug issues to that web app, we can't do,
+we can create new web app and we can publish new featured web app, but it costs us more
+
+so, for that we can make use of deployment slots in web app, where we can create two slots in web app, named production slot and staging slot.two web apps in each slot.
+
+
+IMPLEMENTATION OF DEPLOYMENT SLOTS:
+prerequisite: we need standard or premium app service plan web app needed.
